@@ -1,0 +1,15 @@
+Tal como combinado, aqui segue o desafio que te propomos, que consiste em desenvolver uma base de dados API para o seguinte cenário:
+
+A aplicação X permite aos seus utilizadores registados consultar informação de todas as fotos do instagram para a hashtag #pinkculture. As principais funcionalidades são:
+* Login através do Facebook ou username/password, deverá ser possível ativar ou desativar utilizadores registados
+* Listagem paginada de todas os fotos (pode ser filtrada por ano ou numero de comentarios).
+* Cada foto tem uma página com todos os seus dados (por exemplo: nome, data publicação, numero de likes, hashtags, lista de comentários);
+* Cada foto terá que ter a hipótese de  adicionar a ou remove da blacklist.
+
+O objectivo é estruturar uma API RESTful que sirva de suporte a uma aplicação com estas características.
+Terá que ser enviado também a a base de dados e o seu esquema relacional.
+
+NOTA:
+O código deve ser o mais simples e organizado possível.
+A data limite para a entrega deste desafio é dia 14 de Julho.
+Qualquer dúvida, estou aqui para ajudar.

@@ -1,0 +1,14 @@
+{
+    "name": "thing-pink/hash",
+    "require": {
+        "facebook/php-sdk-v4": "^5.0@dev",
+        "twbs/bootstrap": "^3.3@dev"
+    },
+    "authors": [
+        {
+            "name": "João Brito",
+            "email": "joaogbrito@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
