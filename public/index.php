@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 
-define('APP_PATH', realpath('..'));
+defined('APP_PATH') || define('APP_PATH', realpath('..'));
 //echo('app_path = ' . APP_PATH . '<br>');
 
 try {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "13939ccda868e039839cccf1c80bd67d",
+    "hash": "c3c65ca9a250a6698a4fa206c4a2f912",
     "packages": [
         {
             "name": "facebook/php-sdk-v4",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-                "reference": "cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e"
+                "reference": "b5d7e5c8b85419f9031b08a161e9030dca35f5a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e",
-                "reference": "cde1d8b9f32fc375a8748838eaac1b6d4f48fa5e",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/b5d7e5c8b85419f9031b08a161e9030dca35f5a1",
+                "reference": "b5d7e5c8b85419f9031b08a161e9030dca35f5a1",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2015-05-18 22:26:49"
+            "time": "2015-07-08 19:08:57"
         },
         {
             "name": "twbs/bootstrap",
@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "f300f03f809eaf8bf64785edcc869c6412dfb9ca"
+                "reference": "cb7f569262acaf5d0d6c001146855eb595ffdd20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/f300f03f809eaf8bf64785edcc869c6412dfb9ca",
-                "reference": "f300f03f809eaf8bf64785edcc869c6412dfb9ca",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/cb7f569262acaf5d0d6c001146855eb595ffdd20",
+                "reference": "cb7f569262acaf5d0d6c001146855eb595ffdd20",
                 "shasum": ""
             },
             "replace": {
@@ -110,12 +110,12 @@
                 "responsive",
                 "web"
             ],
-            "time": "2015-06-27 13:21:55"
+            "time": "2015-07-07 04:43:37"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "facebook/php-sdk-v4": 20,
         "twbs/bootstrap": 20

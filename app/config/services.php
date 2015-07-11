@@ -12,12 +12,20 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
-use HashTag\Dispatcher\Dispatcher as Dispatcher;
 
+use HashTag\Dispatcher\Dispatcher as Dispatcher;
+use HashTag\Auth\Auth as Auth;
+use Facebook\Facebook as Facebook;
+use HashTag\Facebook\MyPhalconPersistentDataHandler as MyPhalconPersistentDataHandler;
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
+
+/**
+*   Set the config variable to di 
+*/
+$di->set('config', $config);
 
 /**
  * The URL component is used to generate all kind of urls in the application
@@ -46,12 +54,12 @@ $di->setShared('view', function () use ($config) {
             $volt->setOptions(array(
                 'compiledPath' => $config->application->cacheDir,
                 'compiledSeparator' => '_'
-            ));
+                ));
 
             return $volt;
         },
         '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
-    ));
+        ));
 
     return $view;
 });
@@ -79,7 +87,25 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
 $di->set('dispatcher', function() {
     return new Dispatcher();
 }
 );
+
+$di->set('facebook', function () use ($config, $di){
+    $session = $di->getShared('session');
+    $session->set("redirectUrl", $config->facebook->redirectUrl);
+    $fb = new Facebook(array(
+        'app_id' => $config->facebook->appId, 
+        'app_secret' => $config->facebook->appSecret,
+        'default_graph_version' => $config->facebook->default_graph_version,
+        'persistent_data_handler' => 
+        new MyPhalconPersistentDataHandler($session)
+        ));
+    return $fb;
+});
+
+$di->set('auth', function(){
+    return new Auth();
+});

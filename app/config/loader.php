@@ -11,7 +11,8 @@ $loader->registerNamespaces(
         'HashTag\Models' => $config->application->modelsDir,
         'HashTag\Forms' => $config->application->formsDir,
         'HashTag' => $config->application->libraryDir
+        
     )
 )->register();
 
-//print_r($loader);
+require_once(APP_PATH . '/vendor/autoload.php');

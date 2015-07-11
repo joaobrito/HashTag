@@ -9,6 +9,7 @@ class ControllerBase extends Controller
 	public function indexAction()
 	{
 		//TODO User Session Validation
+		
 	}
 
 }
