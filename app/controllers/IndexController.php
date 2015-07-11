@@ -2,21 +2,23 @@
 
 namespace HashTag\Controllers;
 
-use Facebook\FacebookRedirectLoginHelper as FacebookRedirectLoginHelper;
-use HashTag\Auth\Auth;
 
 class IndexController extends ControllerBase
 {
 
 	public function indexAction()
 	{	
-		$this->view->loginUrl = $this->auth->getFacebookLoginUrl();
+		$this->view->instagramLoginUrl = $this->authInstagram->getInstagramLoginUrl();
+		$session = $this->session;
+		if($session->has('auth-identity')){
+			$this->view->name = $session->get('auth-identity')['name'];
+		}
+		$this->view->loginUrl = $this->authFacebook->getFacebookLoginUrl();
+
+		
 		
 	}
 
 	
-
-	public function logoutAction(){
-	}
 }
 

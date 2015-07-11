@@ -11,14 +11,16 @@ use Facebook\Authentication\AccessTokenMetadata as AccessTokenMetadata;
 /**
 * 
 */
-class Auth extends Component
+class AuthFacebook extends Component
 {
+
 	/**
 	 * Retrives Facebook URL for login
 	 *
 	 * @return string
 	 * @author João Brito
 	 **/
+
 
 	public function getFacebookLoginUrl()
 	{
@@ -50,8 +52,6 @@ class Auth extends Component
 
 		// Get the access token metadata from /debug_token
 		$tokenMetadata = $oAuth2Client->debugToken($accessToken);
-		echo '<h3>Metadata</h3>';
-		var_dump($tokenMetadata);
 
 		// Validation (these will throw FacebookSDKException's when they fail)
 		$tokenMetadata->validateAppId($this->config->facebook->appId);
@@ -68,15 +68,40 @@ class Auth extends Component
 				echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
 				exit;
 			}
-
-			echo '<h3>Long-lived</h3>';
-			var_dump($accessToken->getValue());
 		}
 
-		//$_SESSION['fb_access_token'] = (string) $accessToken;
-		var_dump($tokenMetadata);
-		$this->session->set('auth-accessToken', $accessToken->getValue());
+		//var_dump($tokenMetadata);
+
+		/*
+			Missing:
+				* check if user exists on the database:	Yes - Login complete; No - Register user
+		*/
+
+		//get user details 
+		$response = $this->facebook->get('/me',$accessToken);
+		$decodedBody = $response->getDecodedBody();
+		$userDetails = array(
+			'facebookId' => $decodedBody['id'],
+			'name' => $decodedBody['name'],
+			'email' =>'',
+			'accessToken' => $accessToken->getValue()
+			);
+
+		$this->session->set('auth-identity', $userDetails);
+		
+		//TODO create user on Database
 		
 	}
+
+	//TODO login witout facebook
+	public function login($user, $password){
+
+	}
+
+	public function check($user, $password){
+		return true;
+	}
+
+	//TODO Logout
 
 }

@@ -14,7 +14,10 @@ use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 
 use HashTag\Dispatcher\Dispatcher as Dispatcher;
-use HashTag\Auth\Auth as Auth;
+use HashTag\Auth\AuthFacebook as AuthFacebook;
+
+use HashTag\Auth\AuthInstagram as AuthInstagram;
+
 use Facebook\Facebook as Facebook;
 use HashTag\Facebook\MyPhalconPersistentDataHandler as MyPhalconPersistentDataHandler;
 /**
@@ -106,6 +109,11 @@ $di->set('facebook', function () use ($config, $di){
     return $fb;
 });
 
-$di->set('auth', function(){
-    return new Auth();
+$di->set('authFacebook', function() {
+    return new AuthFacebook();
+});
+
+$di->set('authInstagram', function(){
+    $authInstagram = new AuthInstagram(); 
+    return $authInstagram;
 });
