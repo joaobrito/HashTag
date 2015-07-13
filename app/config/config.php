@@ -33,12 +33,14 @@ return new \Phalcon\Config(array(
     'instagram' => array(
         'oauthUrl' => 'https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=code',
         'properties' => array(
-            'CLIENT-ID' => '5625d48f316241a9b31ac4d65fd6c872',
-            'clientSecret' => 'd6bc79426ad24b069da8449317b2b0d2',
-            'websiteURL' => 'http://thingpinkhash.localhost',
-            'REDIRECT-URI' => 'http://thingpinkhash.localhost/Login/instagramLogin',
+            'CLIENT-ID'         => '5625d48f316241a9b31ac4d65fd6c872',
+            'clientSecret'      => 'd6bc79426ad24b069da8449317b2b0d2',
+            'websiteURL'        => 'http://thingpinkhash.localhost',
+            'REDIRECT-URI'      => 'http://thingpinkhash.localhost/Login/instagramLogin',
             'REDIRECT-AUTH-URI' => 'http://thingpinkhash.localhost/Login/instagramLogin',
-            'responseType' => 'code'
-            )
+            'responseType'      => 'code'
+            ),
+        'defaultHashTag' => 'pinkculture'
         )
-    ));
+    )
+);

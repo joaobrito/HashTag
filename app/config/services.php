@@ -13,10 +13,12 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Http\Request as Request;
+
 use HashTag\Dispatcher\Dispatcher as Dispatcher;
 use HashTag\Auth\AuthFacebook as AuthFacebook;
 
 use HashTag\Auth\AuthInstagram as AuthInstagram;
+use HashTag\Instagram\InstagramHandler as InstagramHandler; 
 
 use Facebook\Facebook as Facebook;
 use HashTag\Facebook\MyPhalconPersistentDataHandler as MyPhalconPersistentDataHandler;
@@ -137,5 +139,9 @@ $di->set('request', function(){
 $di->set('authInstagram', function(){
     $authInstagram = new AuthInstagram(); 
     return $authInstagram;
+});
+
+$di->set('instagramHandler', function(){
+    return new InstagramHandler();
 });
 

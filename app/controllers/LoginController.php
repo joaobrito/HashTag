@@ -17,7 +17,7 @@ class LoginController extends ControllerBase
 	public function instagramLoginAction(){
 
 		$accessToken = $this->request->get($this->config->instagram->properties->get('responseType'));
-		$this->authInstagram->setAccessToken($accessToken);
+		$this->authInstagram->instagramLoginResponse($accessToken);
 		//$this->forward('/index');
 	}
 }

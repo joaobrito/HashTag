@@ -14,7 +14,6 @@ class AuthInstagram extends Component
 	/**
 	* @var string
 	*/
-	private $accessToken;
 
 	public function getInstagramLoginUrl(){
 		$instagramAuthUrl = $this->config->instagram->get('oauthUrl');
@@ -27,6 +26,14 @@ class AuthInstagram extends Component
 		return $instagramAuthUrl;
 	}
 
+
+	/**
+	*	Validates the user with app secret key and the provided code.
+	*	Retrieves the access token and stores it in session
+	*
+	* @var string
+	*/
+
 	public function instagramLoginResponse($code)
 	{
 		$instaRequest = Request::getProvider();
@@ -38,24 +45,20 @@ class AuthInstagram extends Component
 			'redirect_uri' => $this->config->instagram->get('properties')['REDIRECT-AUTH-URI'],
 			'code'=>$code
 			));
-		$this->session->destroy('auth-instagram');
+		
 		if($response->header->statusCode == 200){
-			echo '<br><br>OK - setting session with token '. $response->body . '<br>';
+			//echo '<br><br>OK - setting session with token '. $response->body . '<br>';
 			$this->session->set('auth-instagram', $response->body);
 
 		}
+
+		//TODO save in DB the user details
+
 		$this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
 
 		return $instaRequest;
 	}
 
-	public function setAccessToken($accessToken){
-		$this->accessToken = $this->instagramLoginResponse($accessToken);
-	}	
-
-	public function getAccessToken(){
-		return $this->accessToken;
-	}
 }
 
  /*Phalcon\Http\Client\Response Object ( [body] => {"access_token":"1933446083.5625d48.838423374b3c4ece8c3b640010608f94","user":{"username":"joao.r.brito","bio":"","website":"","profile_picture":"https:\/\/instagramimages-a.akamaihd.net\/profiles\/anonymousUser.jpg","full_name":"Jo\u00e3o Brito","id":"1933446083"}} 

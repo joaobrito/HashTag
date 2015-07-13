@@ -21,6 +21,7 @@ class IndexController extends ControllerBase
 			
 		}
 		$this->view->instagramDetails = $this->session->get('auth-instagram');
+
 		
 	}
 
