@@ -8,7 +8,7 @@ return new \Phalcon\Config(array(
         'host'        => 'localhost',
         'username'    => 'thingPink',
         'password'    => 'thingPink',
-        'dbname'      => 'thingPink',
+        'dbname'      => 'thingPinkHash',
         'charset'     => 'utf8',
         ),
     'application' => array(
@@ -36,7 +36,8 @@ return new \Phalcon\Config(array(
             'CLIENT-ID' => '5625d48f316241a9b31ac4d65fd6c872',
             'clientSecret' => 'd6bc79426ad24b069da8449317b2b0d2',
             'websiteURL' => 'http://thingpinkhash.localhost',
-            'REDIRECT-URI' => 'http://thingpinkhash.localhost',
+            'REDIRECT-URI' => 'http://thingpinkhash.localhost/Login/instagramLogin',
+            'REDIRECT-AUTH-URI' => 'http://thingpinkhash.localhost/Login/instagramLogin',
             'responseType' => 'code'
             )
         )

@@ -8,7 +8,6 @@ use Facebook\PersistentData\PersistentDataInterface as PersistentDataInterface;
 class MyPhalconPersistentDataHandler implements PersistentDataInterface
 {
 	private $session;
-	private $url;
 
 	function __construct($session) {
 		$this->session = $session;
@@ -16,18 +15,16 @@ class MyPhalconPersistentDataHandler implements PersistentDataInterface
 
 	public function set($key, $value)
 	{
+		echo 'get ' . $value . ' value => '. $value . ' on Phalcon FW';
 		$this->session->set($key, $value);
 	}
 
 	public function get($key)
 	{
+		
 		if($this->session->has($key)){
 			return $this->session->get($key);
 		}
-	}
-
-	public function getRedirectUrl(){
-		return $this->url;
 	}
 
 }

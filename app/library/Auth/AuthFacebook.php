@@ -28,7 +28,7 @@ class AuthFacebook extends Component
 		$this->view->fb = $fb;
 		if(!is_null($fb)){
 			$helper = $fb->getRedirectLoginHelper();
-			return $helper->getLoginUrl($this->config->facebook->redirectUrl, array($config->facebook->permissions));
+			return $helper->getLoginUrl($this->config->facebook->redirectUrl);
 		}
 		else{
 			$this->view->message = '$fb null!';
@@ -45,7 +45,7 @@ class AuthFacebook extends Component
 	 */
 	public function facebookLoginResponse($helper){
 
-		$accessToken = $helper->getAccessToken();
+		$accessToken = $helper->getAccessToken($this->config->facebook->redirectUrl);
 
 		// The OAuth 2.0 client handler helps us manage access tokens
 		$oAuth2Client = $this->facebook->getOAuth2Client();
@@ -87,7 +87,7 @@ class AuthFacebook extends Component
 			'accessToken' => $accessToken->getValue()
 			);
 
-		$this->session->set('auth-identity', $userDetails);
+		$this->session->set('auth-facebook', $userDetails);
 		
 		//TODO create user on Database
 		

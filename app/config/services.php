@@ -12,7 +12,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
-
+use Phalcon\Http\Request as Request;
 use HashTag\Dispatcher\Dispatcher as Dispatcher;
 use HashTag\Auth\AuthFacebook as AuthFacebook;
 
@@ -87,14 +87,22 @@ $di->set('modelsMetadata', function () {
 $di->setShared('session', function () {
     $session = new SessionAdapter();
     $session->start();
-
     return $session;
 });
 
+/**
+* Start dispatcher
+*/
 $di->set('dispatcher', function() {
-    return new Dispatcher();
+    $dispatcher = new Dispatcher();
+    return $dispatcher;
 }
 );
+
+
+/**
+* Setup Facebook Auth
+*/
 
 $di->set('facebook', function () use ($config, $di){
     $session = $di->getShared('session');
@@ -113,7 +121,21 @@ $di->set('authFacebook', function() {
     return new AuthFacebook();
 });
 
+/**
+* Setup Request Handler
+*/
+
+$di->set('request', function(){
+    $request = new Request();
+    return $request;
+});
+
+/**
+* Setup Instagram Auth
+*/
+
 $di->set('authInstagram', function(){
     $authInstagram = new AuthInstagram(); 
     return $authInstagram;
 });
+

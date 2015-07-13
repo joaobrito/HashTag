@@ -8,17 +8,21 @@ class IndexController extends ControllerBase
 
 	public function indexAction()
 	{	
-		$this->view->instagramLoginUrl = $this->authInstagram->getInstagramLoginUrl();
 		$session = $this->session;
-		if($session->has('auth-identity')){
-			$this->view->name = $session->get('auth-identity')['name'];
+		if($session->has('auth-facebook')){
+			$this->view->name = $session->get('auth-facebook')['name'];
 		}
-		$this->view->loginUrl = $this->authFacebook->getFacebookLoginUrl();
+		else{
+			$this->view->loginUrl = $this->authFacebook->getFacebookLoginUrl();
+		}
 
-		
+		if(!$session->has('auth-instagram')){
+			$this->view->instagramLoginUrl = $this->authInstagram->getInstagramLoginUrl();
+			
+		}
+		$this->view->instagramDetails = $this->session->get('auth-instagram');
 		
 	}
 
-	
 }
 
