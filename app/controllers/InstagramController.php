@@ -7,11 +7,10 @@ class InstagramController extends ControllerBase
 
     public function indexAction($sort = null, $filter = null, $hashTag = null)
     {
-    	$this->instagramHandler->getAllPosts();
+    	$this->view->posts = json_decode($this->instagramHandler->getAllPosts()->body, true)['data'];
     }
 
     public function getAction($id){
 
     }
 }
-

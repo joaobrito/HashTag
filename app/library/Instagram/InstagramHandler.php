@@ -14,16 +14,20 @@ class InstagramHandler extends Component
 	{
 		is_null($hashTag) ? $hashTag = $this->config->instagram->defaultHashTag : $hashTag;
 		$this->view->hashTag = $hashTag;
-		
-		// $params = array(
-		// 	$this->
-		// 	'' => ''
-		// 	);
-		// $response = $this->instagramPostRequest()
-		
+		$baseUri = 'https://api.instagram.com/v1/tags/'.$hashTag.'/media/recent';
+		$params = array(
+			'access_token' => $this->session->get('auth-instagram')
+			);
+		$response = $this->instagramGetRequest($baseUri,$params);
+
+		//$posts = $response->
+
+		foreach ($variable as $value) {
+			# code...
+		}
+
+		return $response;
 	}
-
-
 
 	protected function instagramPostRequest($baseUri, $params = array()){
 		$request = Request::getProvider();
@@ -42,7 +46,9 @@ class InstagramHandler extends Component
 	protected function instagramGetRequest($baseUri, $params = array()){
 		$request = Request::getProvider();
 		$request->setBaseUri($baseUri);
-		$response = $request->get();
-		return null;
+		$request->header->set('Accept', 'application/json');
+		$response = $request->get($baseUri, $params);
+
+		return $response;
 	}
 }

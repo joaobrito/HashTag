@@ -25,5 +25,8 @@ class IndexController extends ControllerBase
 		
 	}
 
+	public function destroyAction(){
+		$this->session->destroy();
+	}
 }
 

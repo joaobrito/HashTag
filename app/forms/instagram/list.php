@@ -16,9 +16,9 @@ class ListForm extends Form
 	 * @return void
 	 * @author 
 	 **/
-	public function initialize()
+	public function initialize($entity = null, $options = null)
 	{
-		$this->add((new Text()))
+		
 	}
 
 }

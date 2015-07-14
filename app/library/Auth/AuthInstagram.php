@@ -10,10 +10,11 @@ use Phalcon\Http\Client\Request as Request;
 */
 class AuthInstagram extends Component
 {
-	
-	/**
-	* @var string
+	/*
+*	* @var response
 	*/
+	protected $response = null;
+
 
 	public function getInstagramLoginUrl(){
 		$instagramAuthUrl = $this->config->instagram->get('oauthUrl');
@@ -38,6 +39,7 @@ class AuthInstagram extends Component
 	{
 		$instaRequest = Request::getProvider();
 		$instaRequest->setBaseUri('https://api.instagram.com/');
+		
 		$response = $instaRequest->post('oauth/access_token',array(
 			'client_id' => $this->config->instagram->get('properties')['CLIENT-ID'],
 			'client_secret' => $this->config->instagram->get('properties')['clientSecret'],
@@ -45,16 +47,16 @@ class AuthInstagram extends Component
 			'redirect_uri' => $this->config->instagram->get('properties')['REDIRECT-AUTH-URI'],
 			'code'=>$code
 			));
-		
+
 		if($response->header->statusCode == 200){
-			//echo '<br><br>OK - setting session with token '. $response->body . '<br>';
-			$this->session->set('auth-instagram', $response->body);
+			$body = json_decode($response->body, true);
+			$this->session->set('auth-instagram', $body['access_token']);
 
 		}
 
 		//TODO save in DB the user details
 
-		$this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
+		//$this->dispatcher->forward(array('controller' => 'index', 'action' => 'index'));
 
 		return $instaRequest;
 	}

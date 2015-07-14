@@ -18,6 +18,12 @@ class LoginController extends ControllerBase
 
 		$accessToken = $this->request->get($this->config->instagram->properties->get('responseType'));
 		$this->authInstagram->instagramLoginResponse($accessToken);
-		//$this->forward('/index');
+		
+		//$this->dispatcher->forward(array('controller' => 'instagram', 'action' => 'index'));
+		$this->response->redirect('../instagram/');
+		$this->view->disable();
+		// $response = new Response();
+		// $response->redirect('/list');
+		// $response->send();
 	}
 }

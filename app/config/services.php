@@ -141,6 +141,10 @@ $di->set('authInstagram', function(){
     return $authInstagram;
 });
 
+
+/**
+* Setup Instagram Handler
+*/
 $di->set('instagramHandler', function(){
     return new InstagramHandler();
 });
