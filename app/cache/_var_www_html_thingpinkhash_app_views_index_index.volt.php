@@ -1,6 +1,4 @@
 <h1>This is app landing page</h1>
-
-<br>
 <?php if (isset($name)) { ?>
 
 Welcome <?php echo $name; ?>

@@ -1,6 +1,4 @@
 <h1>This is app landing page</h1>
-
-<br>
 {% if name is defined %}
 
 Welcome {{name}}

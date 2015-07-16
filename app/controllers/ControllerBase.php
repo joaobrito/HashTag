@@ -14,10 +14,17 @@ class ControllerBase extends Controller
      * @param Dispatcher $dispatcher
      * @return boolean
      */
-    /*public function beforeExecuteRoute(Dispatcher $dispatcher)
+    public function beforeExecuteRoute(Dispatcher $dispatcher)
     {
+        if($this->session->has('auth-facebook')){
+            $this->view->setTemplateAfter('private');
+        }
+        else{
+            $this->view->setTemplateAfter('public');
+        }
+        
         //$this->view->setVar('logged_in', is_array($this->auth->getIdentity()));
-
+/*
         $controllerName = $dispatcher->getControllerName();
 
         // Only check permissions on private controllers
@@ -58,6 +65,6 @@ class ControllerBase extends Controller
 
                 return false;
             }
-        }
-    }*/
+        }*/
+    }
 }

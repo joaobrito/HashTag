@@ -4,6 +4,10 @@ namespace HashTag\Instagram;
 
 use Phalcon\Mvc\User\Component as Component;
 use Phalcon\Http\Client\Request as Request;
+
+//InstagramObjects
+use HashTag\Instagram\Objects\Post as Post; 
+
 /**
 * 
 */
@@ -19,13 +23,8 @@ class InstagramHandler extends Component
 			'access_token' => $this->session->get('auth-instagram')
 			);
 		$response = $this->instagramGetRequest($baseUri,$params);
-
-		//$posts = $response->
-
-		foreach ($variable as $value) {
-			# code...
-		}
-
+		
+		$response = $this->processPostListResponse($response->body, true);
 		return $response;
 	}
 
@@ -50,5 +49,24 @@ class InstagramHandler extends Component
 		$response = $request->get($baseUri, $params);
 
 		return $response;
+	}
+
+	/**
+	 * Converts json into Instagram Objects
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	protected function processPostListResponse($jsonResponse)
+	{
+		$response = json_decode($jsonResponse,true);
+
+		$posts = array();
+		foreach ($response['data'] as $value) {
+			array_push($posts,new Post($value));
+		}
+
+		return $posts;
+		
 	}
 }
