@@ -21,7 +21,7 @@ return new \Phalcon\Config(array(
         'libraryDir'     => APP_PATH . '/app/library/',
         'cacheDir'       => APP_PATH . '/app/cache/',
         'layoutsDir'     => APP_PATH . '/app/layouts/',
-        'baseUri'        => '/thingPinkHash/'
+        'baseUri'        => '/'
         ),
     'facebook' => array(
         'appId' => '852892228133122',

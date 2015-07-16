@@ -11,6 +11,6 @@ class InstagramController extends ControllerBase
     }
 
     public function getAction($id){
-    	
+    	$this->view->post = $this->instagramHandler->getPost($id);
     }
 }

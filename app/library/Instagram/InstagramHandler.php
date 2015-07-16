@@ -5,7 +5,6 @@ namespace HashTag\Instagram;
 use Phalcon\Mvc\User\Component as Component;
 use Phalcon\Http\Client\Request as Request;
 
-//InstagramObjects
 use HashTag\Instagram\Objects\Post as Post; 
 
 /**
@@ -14,19 +13,40 @@ use HashTag\Instagram\Objects\Post as Post;
 class InstagramHandler extends Component
 {
 
+	public function getPost($id){
+		$baseUri = 'https://api.instagram.com/v1/media/' . $id;
+
+		$params = array(
+			'client_id' => $this->config->get('instagram')['properties']['CLIENT-ID']
+			);
+
+		$response = $this->instagramGetRequest($baseUri, $params);
+		
+		$response = $this->processPost($response['data']);
+		return $response;
+	}
+
 	public function getAllPosts($hashTag = null)
 	{
 		is_null($hashTag) ? $hashTag = $this->config->instagram->defaultHashTag : $hashTag;
+
 		$this->view->hashTag = $hashTag;
 		$baseUri = 'https://api.instagram.com/v1/tags/'.$hashTag.'/media/recent';
+
 		$params = array(
-			'access_token' => $this->session->get('auth-instagram')
+			//'access_token' => $this->session->get('auth-instagram')
+			'client_id' => $this->config->get('instagram')['properties']['CLIENT-ID']
 			);
 		$response = $this->instagramGetRequest($baseUri,$params);
 		
-		$response = $this->processPostListResponse($response->body, true);
+		$response = $this->processPostListResponse($response);
 		return $response;
 	}
+
+
+	/**
+	* Process Data Fuctions
+	*/
 
 	protected function instagramPostRequest($baseUri, $params = array()){
 		$request = Request::getProvider();
@@ -47,6 +67,8 @@ class InstagramHandler extends Component
 		$request->setBaseUri($baseUri);
 		$request->header->set('Accept', 'application/json');
 		$response = $request->get($baseUri, $params);
+		
+		$response = json_decode($response->body,true);
 
 		return $response;
 	}
@@ -57,16 +79,20 @@ class InstagramHandler extends Component
 	 * @return void
 	 * @author 
 	 **/
-	protected function processPostListResponse($jsonResponse)
+	protected function processPostListResponse($response)
 	{
-		$response = json_decode($jsonResponse,true);
-
 		$posts = array();
 		foreach ($response['data'] as $value) {
-			array_push($posts,new Post($value));
+			array_push($posts,$this->processPost($value));
 		}
 
 		return $posts;
 		
 	}
+
+	protected function processPost($postData){
+		$post = new Post($postData);
+		return $post;
+	}
+	
 }

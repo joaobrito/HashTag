@@ -2,12 +2,10 @@
 
 namespace HashTag\Instagram\Objects;
 
-use HashTag\Instagram\Objects\Comments as Comments;
-
+use HashTag\Instagram\Objects\Comment as Comment;
 use HashTag\Instagram\Objects\Caption as Caption;
-
 use HashTag\Instagram\Objects\Image as Image;
-
+use HashTag\Instagram\Objects\User as User;
 
 /**
 * 
@@ -41,17 +39,18 @@ class Post
 
 		$this->tags = $post['tags'];
 
-		$this->commentCount = $post['comments']['count'];
+		$this->commentCount = count($post['comments']['data']);
 		if($this->commentCount > 0){
-			$comments = array();
-			foreach ($post['comments']['data'] as $comment) {
-				array_push($comments, new Comment($comment));
+            foreach (($post['comments']['data']) as $comment) {
+				array_push($this->comments, new Comment($comment));
 			}
 		}
 
 		$this->caption = new Caption($post['caption']);
 
 		$this->image = new Image($post['images']);
+
+        $this->user = new User($post['user']);
 
 	}
 
@@ -116,7 +115,7 @@ class Post
     }
 
     /**
-     * Gets the value of image.
+     * Gets the image link.
      *
      * @return mixed
      */

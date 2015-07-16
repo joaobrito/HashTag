@@ -1,3 +1,6 @@
+
+{{form('HashTag\Forms\LoginForm')}}
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -19,6 +22,21 @@
 	</div>
 </nav>
 
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+	<div class="container">
+		<h1>#HashTag Challenge</h1>
+		<p>This is HashTag Landing Page! </p>
+		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+	</div>
+</div>
+
 <div class="container">
 	{{content()}}
-</div>
+
+	<hr>
+
+	<footer>
+		<p>&copy; Company 2015</p>
+	</footer>
+</div> <!-- /container -->

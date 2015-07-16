@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Phalcon PHP Framework</title>
 	<!--link rel="stylesheet" href="css/jumbotron.css"-->
-	<?php echo $this->tag->stylesheetLink('../css/jumbotron.css'); ?>
+	<?php echo $this->tag->stylesheetLink('css/jumbotron.css'); ?>
 	
 </head>
 <body>

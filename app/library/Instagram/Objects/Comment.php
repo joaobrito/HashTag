@@ -15,12 +15,13 @@ class Comment
 	protected $text;
 	protected $user;
 
-	function __construct($comment = array())
+	function __construct($comment = null)
 	{
-		$this->id = $comment['id'];
-		$this->created_time = date($comment['created_time']);
+        $this->id = $comment['id'];
 		$this->text = $comment['text'];
 		$this->user = new User($comment['from']);
+        $this->created_time = date($comment['created_time']);
+        
 	}
 
     /**
@@ -53,4 +54,13 @@ class Comment
         return $this->text;
     }
 
+    /**
+     * Gets the value of user.
+     *
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
