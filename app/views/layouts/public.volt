@@ -21,22 +21,13 @@
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
-
+	
 <!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h1>#HashTag Challenge</h1>
-		<p>This is HashTag Landing Page! </p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-	</div>
-</div>
 
 <div class="container">
 	{{content()}}
-
 	<hr>
-
 	<footer>
-		<p>&copy; Company 2015</p>
+		<p>&copy; HashTag 4 ThingPink 2015</p>
 	</footer>
 </div> <!-- /container -->
