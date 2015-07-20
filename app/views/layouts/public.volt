@@ -1,6 +1,4 @@
 
-{{form('HashTag\Forms\LoginForm')}}
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -14,14 +12,33 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
+
+				<!-- 
+					* TODO set menus on DB 
+					* Fix active class. ControllerName is not well defined.
+				-->
+				{%- set menus = [
+				'Home': '/',
+				'Instagram': '/instagram',
+				'Login': '/session/login'
+				] -%}	
+
+				{%- for key, value in menus %}
+				{% if value == dispatcher.getControllerName() %}
+				<li class="active">{{ link_to(value, key) }}</li>
+				{% else %}
+
+				<li>{{link_to(value, key) }}</li>
+				{% endif %}
+				{%- endfor -%}
+
+
+			
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
-	
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 
 <div class="container">

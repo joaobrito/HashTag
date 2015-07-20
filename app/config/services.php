@@ -101,7 +101,6 @@ $di->set('dispatcher', function() {
 }
 );
 
-
 /**
 * Setup Facebook Auth
 */

@@ -1,0 +1,33 @@
+Instagram:
+	* pagination - DONE
+	* button add to blacklist
+	* filter by year, comments number
+(improvements)
+	* pagination with jQuery
+	* signed requests to instagram - gets more requests allowed
+	* tag subscription 
+	
+Facebook: 
+(improvements)
+	* share instagram post on facebook
+
+Auth: 
+	* sign up page (change form)
+	* implement TTL
+	* Facebook/Instagram:
+		- verify if user is already registered
+		- create users on db
+(improvements)
+	* link accounts on app (hashtag, facebook and instagram)
+
+Managment:
+	* User:
+		- post management blacklist
+	* Admin: 
+		- admin page - enable/disable users
+
+General: 
+	* Exception handling
+
+
+Notas:

@@ -5,9 +5,13 @@ namespace HashTag\Controllers;
 class InstagramController extends ControllerBase
 {
 
-    public function indexAction($sort = null, $filter = null, $hashTag = null)
+    public function indexAction()
     {
-    	$this->view->posts = $this->instagramHandler->getAllPosts();
+
+       	$next_id = $this->dispatcher->getParam('0');
+       	echo 'next_id' . $next_id . '<br>';
+    	$result = $this->instagramHandler->getAllPosts($next_id,null);
+    	$this->view->posts = $result;
     }
 
     public function getAction($id){

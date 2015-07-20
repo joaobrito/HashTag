@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Phalcon PHP Framework</title>
+	<title>HashTag Challenge</title>
 	<!--link rel="stylesheet" href="css/jumbotron.css"-->
 	{{stylesheet_link('css/jumbotron.css')}}
 	

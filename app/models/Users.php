@@ -47,13 +47,7 @@ class Users extends \Phalcon\Mvc\Model
      *
      * @var string
      */
-    public $facebookToken;
-
-    /**
-     *
-     * @var string
-     */
-    public $instagramToken;
+    public $instagramId;
 
     /**
      *

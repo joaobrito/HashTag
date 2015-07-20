@@ -3,7 +3,6 @@
     "require": {
         "facebook/php-sdk-v4": "^5.0@dev",
         "twbs/bootstrap": "^3.3@dev",
-        "components/jquery": "^2.1",
         "phalcon/devtools": "^2.0",
         "phalcon/incubator": "^2.0"
     },

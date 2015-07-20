@@ -25,7 +25,6 @@ class AuthFacebook extends Component
 	public function getFacebookLoginUrl()
 	{
 		$fb = $this->facebook;
-		$this->view->fb = $fb;
 		if(!is_null($fb)){
 			$helper = $fb->getRedirectLoginHelper();
 			return $helper->getLoginUrl($this->config->facebook->redirectUrl);
@@ -72,7 +71,7 @@ class AuthFacebook extends Component
 
 		//var_dump($tokenMetadata);
 
-		/*
+		/* //TODO
 			Missing:
 				* check if user exists on the database:	Yes - Login complete; No - Register user
 		*/
@@ -91,15 +90,6 @@ class AuthFacebook extends Component
 		
 		//TODO create user on Database
 		
-	}
-
-	//TODO login witout facebook
-	public function login($user, $password){
-
-	}
-
-	public function check($user, $password){
-		return true;
 	}
 
 	//TODO Logout

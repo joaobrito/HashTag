@@ -26,7 +26,7 @@ return new \Phalcon\Config(array(
     'facebook' => array(
         'appId' => '852892228133122',
         'appSecret' => '249966f550385b2ad969100d4876e805', 
-        'redirectUrl' => 'http://thingpinkhash.localhost/Login/facebookLogin', 
+        'redirectUrl' => 'http://thingpinkhash.localhost/session/facebookLogin', 
         'default_graph_version' => 'v2.2', 
         'permissions' => array('email')
         ),
@@ -36,8 +36,8 @@ return new \Phalcon\Config(array(
             'CLIENT-ID'         => '5625d48f316241a9b31ac4d65fd6c872',
             'clientSecret'      => 'd6bc79426ad24b069da8449317b2b0d2',
             'websiteURL'        => 'http://thingpinkhash.localhost',
-            'REDIRECT-URI'      => 'http://thingpinkhash.localhost/Login/instagramLogin',
-            'REDIRECT-AUTH-URI' => 'http://thingpinkhash.localhost/Login/instagramLogin',
+            'REDIRECT-URI'      => 'http://thingpinkhash.localhost/session/instagramLogin',
+            'REDIRECT-AUTH-URI' => 'http://thingpinkhash.localhost/session/instagramLogin',
             'responseType'      => 'code'
             ),
         'defaultHashTag' => 'pinkculture'
