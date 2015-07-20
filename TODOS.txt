@@ -1,5 +1,4 @@
 Instagram:
-	* pagination - DONE
 	* button add to blacklist
 	* filter by year, comments number
 (improvements)
